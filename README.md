@@ -48,7 +48,8 @@ Services (baseURL/services)
 
 ```bash
 ../acuerdos
-../juicios
+../juicios_locales
+../juicios_federales
 ../juzgados
 ```
 

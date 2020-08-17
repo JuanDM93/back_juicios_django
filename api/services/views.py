@@ -1,7 +1,15 @@
 from rest_framework import viewsets
 
-from .models import Acuerdo, Juicio, Juzgado
-from .serializers import AcuerdoSerial, JuicioSerial, JuzgadoSerial
+from .models import (
+    Acuerdo,
+    JuicioLocal, JuicioFederal,
+    Juzgado
+)
+from .serializers import (
+    AcuerdoSerial,
+    JuicioLocalSerial, JuicioFederalSerial,
+    JuzgadoSerial
+)
 
 # ACUERDO
 class AcuerdoViewSet(viewsets.ModelViewSet):
@@ -12,14 +20,23 @@ class AcuerdoViewSet(viewsets.ModelViewSet):
     queryset = Acuerdo.objects.all()
     serializer_class = AcuerdoSerial
 
-# JUICIO
-class JuicioViewSet(viewsets.ModelViewSet):
+# JUICIOs
+class JuicioLocalViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list`, `create`, `retrieve`,
     `update` and `destroy` actions.
     """
-    queryset = Juicio.objects.all()
-    serializer_class = JuicioSerial
+    queryset = JuicioLocal.objects.all()
+    serializer_class = JuicioLocalSerial
+
+class JuicioFederalViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list`, `create`, `retrieve`,
+    `update` and `destroy` actions.
+    """
+    queryset = JuicioFederal.objects.all()
+    serializer_class = JuicioFederalSerial
+
 
 # JUZGADO
 class JuzgadoViewSet(viewsets.ModelViewSet):

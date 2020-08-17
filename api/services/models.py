@@ -13,18 +13,6 @@ class Juicio(models.Model):
     nombre = models.CharField(max_length=32)
     
     # Relaciones
-    LOCAL = 'L'
-    FEDERAL = 'F'
-    TIPOS = [
-        (LOCAL, 'LOCAL'),
-        (FEDERAL, 'FEDERAL'),
-    ]
-    tipo = models.CharField(
-        max_length=1,
-        choices=TIPOS,
-        default=LOCAL,
-    )
-    
     asignados = models.TextField()
     abogados = models.ManyToManyField(Abogado)
     
@@ -36,10 +24,28 @@ class Juicio(models.Model):
 
 class JuicioLocal(Juicio):
     # Propiedades
+    LOCAL = 'L'
+    TIPOS = [
+        (LOCAL, 'LOCAL'),
+    ]
+    tipo = models.CharField(
+        max_length=1,
+        choices=TIPOS,
+        default=LOCAL,
+    )
     extraLocal = models.TextField()
 
 class JuicioFederal(Juicio):
     # Propiedades
+    FEDERAL = 'F'
+    TIPOS = [
+        (FEDERAL, 'FEDERAL'),
+    ] 
+    tipo = models.CharField(
+        max_length=1,
+        choices=TIPOS,
+        default=FEDERAL,
+    )
     extraFederal = models.TextField()
 
 # ACUERDOS
