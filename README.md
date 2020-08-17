@@ -15,15 +15,8 @@ pip install -r requirements.txt
 Build and [migrate](https://docs.djangoproject.com/en/3.1/topics/migrations/) DB
 
 ```bash
-python manage.py makemigrations users services
+python manage.py makemigrations accounts services
 python manage.py migrate
-```
-
-or
-
-```bash
-django-admin makemigrations users services
-django-admin migrate
 ```
 
 ## Usage
@@ -44,7 +37,7 @@ python manage.py runserver <PORT>
 
 Admin (baseURL/admin)
 
-Users (baseURL/users)
+Users (baseURL/accounts)
 
 ```bash
 ../abogados
