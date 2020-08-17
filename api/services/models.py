@@ -51,7 +51,7 @@ class JuicioFederal(Juicio):
 
 # ACUERDOS
 class Acuerdo(models.Model):
-    # Propiedades
+    # Propiedades  
     nombre = models.CharField(max_length=32)
     contenido = models.TextField()
 
