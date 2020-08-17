@@ -11,7 +11,21 @@ class Juzgado(models.Model):
 class Juicio(models.Model):
     # Propiedades
     nombre = models.CharField(max_length=32)
+    fecha = models.DateField()
     
+    # TIPO
+    FEDERAL = 'F'
+    LOCAL = 'L'
+    TIPOS = [
+        (LOCAL, 'LOCAL'),
+        (FEDERAL, 'FEDERAL'),
+    ]
+    tipo = models.CharField(
+        max_length=1,
+        choices=TIPOS,
+        default=LOCAL,
+    )
+
     # Relaciones
     asignados = models.TextField()
     abogados = models.ManyToManyField(Abogado)
@@ -22,30 +36,17 @@ class Juicio(models.Model):
         on_delete=models.CASCADE
     )    
 
+    class Meta():
+        # Latest by ascending order_date. (-descending)
+        ordering = ['-juzgado']
+        get_latest_by = ['fecha']
+
 class JuicioLocal(Juicio):
     # Propiedades
-    LOCAL = 'L'
-    TIPOS = [
-        (LOCAL, 'LOCAL'),
-    ]
-    tipo = models.CharField(
-        max_length=1,
-        choices=TIPOS,
-        default=LOCAL,
-    )
     extraLocal = models.TextField()
 
 class JuicioFederal(Juicio):
     # Propiedades
-    FEDERAL = 'F'
-    TIPOS = [
-        (FEDERAL, 'FEDERAL'),
-    ] 
-    tipo = models.CharField(
-        max_length=1,
-        choices=TIPOS,
-        default=FEDERAL,
-    )
     extraFederal = models.TextField()
 
 # ACUERDOS

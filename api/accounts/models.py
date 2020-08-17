@@ -17,6 +17,8 @@ class Abogado(Usuario):
         related_name='abogados',
         on_delete=models.CASCADE
     )
+    class Meta():
+        ordering = ['despacho']
 
 class DespachoAdmin(Abogado):
     # Propiedades

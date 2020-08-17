@@ -27,6 +27,8 @@ class JuicioSerial(serializers.ModelSerializer):
         fields = (
             'id',
             'nombre',
+            'fecha',
+            'tipo',
             'juzgado',
             'abogados',
             'acuerdos',
@@ -40,7 +42,6 @@ class JuicioFederalSerial(JuicioSerial):
         fields = (
             'id',
             'nombre',
-            'tipo',
             'juzgado',
             'abogados',
             'acuerdos',
@@ -55,10 +56,9 @@ class JuicioLocalSerial(JuicioSerial):
         fields = (
             'id',
             'nombre',
-            'tipo',
+            'juzgado',
             'abogados',
             'acuerdos',
-            'juzgado',
             'extraLocal',
         )
 

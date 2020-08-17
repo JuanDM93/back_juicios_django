@@ -28,6 +28,7 @@ urlpatterns = [
     path('services/', include('api.services.urls')),
 
     # REST AUTH
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls')),
+    #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
 
