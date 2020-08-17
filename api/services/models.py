@@ -13,10 +13,21 @@ class Juicio(models.Model):
     nombre = models.CharField(max_length=32)
     
     # Relaciones
-    tipo = models.CharField(max_length=10)
-    asignados = models.TextField()
+    LOCAL = 'L'
+    FEDERAL = 'F'
+    TIPOS = [
+        (LOCAL, 'LOCAL'),
+        (FEDERAL, 'FEDERAL'),
+    ]
+    tipo = models.CharField(
+        max_length=1,
+        choices=TIPOS,
+        default=LOCAL,
+    )
     
+    asignados = models.TextField()
     abogados = models.ManyToManyField(Abogado)
+    
     juzgado = models.ForeignKey(
         Juzgado,
         related_name='juicios',

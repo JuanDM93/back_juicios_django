@@ -1,10 +1,13 @@
 ### macOS ###
 .DS_Store
 
+# Code #
+.vscode
+
 # Environments
 env/
 
 ### Django ###
 db.*
-api/*/__pycache__/
-
+*__pycache__/
+*migrations/
