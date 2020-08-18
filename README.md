@@ -15,7 +15,7 @@ pip install -r requirements.txt
 Build and [migrate](https://docs.djangoproject.com/en/3.1/topics/migrations/) DB
 
 ```bash
-python manage.py makemigrations accounts services
+python manage.py makemigrations accounts locals federals
 python manage.py migrate
 ```
 
@@ -44,13 +44,19 @@ Users (baseURL/accounts)
 ../despachos
 ```
 
-Services (baseURL/services)
+Locales (baseURL/locals)
 
 ```bash
 ../acuerdos
 ../juicios
-../juicios_locales
-../juicios_federales
+../juzgados
+```
+
+Federal (baseURL/federals)
+
+```bash
+../acuerdos
+../juicios
 ../juzgados
 ```
 

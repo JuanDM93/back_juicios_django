@@ -29,8 +29,8 @@ ALLOWED_HOSTS = []
 
 # CORS
 CORS_ORIGIN_WHITELIST = (
-    'https://localhost',
-    'https://127.0.0.1',
+    'http://localhost:4200',
+    'http://127.0.0.1:4200',
 )
 
 # Application definition
@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'rest_framework',
     # APIs
     'api.accounts.apps.AccountsConfig',
-    'api.services.apps.ServicesConfig',
+    'api.locals.apps.LocalsConfig',
+    'api.federals.apps.FederalsConfig',
 ]
 
 MIDDLEWARE = [

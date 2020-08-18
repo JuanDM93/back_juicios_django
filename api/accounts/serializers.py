@@ -10,6 +10,8 @@ class AbogadoSerial(serializers.ModelSerializer):
             'id',
             'nombre',
             'despacho',
+            'locales',
+            'federales',
         )
 
 # DESPACHO

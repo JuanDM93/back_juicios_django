@@ -4,7 +4,7 @@ from .models import Abogado, Despacho
 from .serializers import AbogadoSerial, DespachoSerial
 
 # DESPACHO
-class DespachoViewSet(viewsets.ModelViewSet):
+class DespachoViewSet(viewsets.ReadOnlyModelViewSet):
     """
     This viewset automatically provides `list`, `create`, `retrieve`,
     `update` and `destroy` actions.
@@ -17,7 +17,7 @@ class DespachoViewSet(viewsets.ModelViewSet):
     lookup_field = 'nombre'
 
 # ABOGADO
-class AbogadoViewSet(viewsets.ModelViewSet):
+class AbogadoViewSet(viewsets.ReadOnlyModelViewSet):
     """
     This viewset automatically provides `list`, `create`, `retrieve`,
     `update` and `destroy` actions.
@@ -28,4 +28,3 @@ class AbogadoViewSet(viewsets.ModelViewSet):
         permissions.IsAuthenticatedOrReadOnly
     ]
     lookup_field = 'email'
-    #lookup_url_kwarg = 'product_id'

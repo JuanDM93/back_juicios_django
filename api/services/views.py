@@ -2,13 +2,13 @@ from rest_framework import viewsets
 
 from .models import (
     Acuerdo,
-    Juicio, JuicioLocal, JuicioFederal,
-    Juzgado
+    JuicioLocal, JuicioFederal,
+    JuzgadoLocal, JuzgadoFederal,
 )
 from .serializers import (
     AcuerdoSerial,
-    JuicioSerial, JuicioLocalSerial, JuicioFederalSerial,
-    JuzgadoSerial
+    JuicioLocalSerial, JuicioFederalSerial,
+    JuzgadoLocalSerial, JuzgadoFederalSerial,
 )
 
 # ACUERDO
@@ -20,14 +20,6 @@ class AcuerdoViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = AcuerdoSerial
 
 # JUICIOs
-class JuicioViewSet(viewsets.ModelViewSet):
-    """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
-    """
-    queryset = Juicio.objects.all()
-    serializer_class = JuicioSerial
-
 class JuicioLocalViewSet(viewsets.ReadOnlyModelViewSet):
     """
     This viewset automatically provides `list`, `retrieve` actions.
@@ -43,9 +35,16 @@ class JuicioFederalViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = JuicioFederalSerial
 
 # JUZGADO
-class JuzgadoViewSet(viewsets.ReadOnlyModelViewSet):
+class JuzgadoLocalViewSet(viewsets.ReadOnlyModelViewSet):
     """
     This viewset automatically provides `list`, `retrieve` actions.
     """
-    queryset = Juzgado.objects.all()
-    serializer_class = JuzgadoSerial
+    queryset = JuzgadoLocal.objects.all()
+    serializer_class = JuzgadoLocalSerial
+
+class JuzgadoFederalViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    This viewset automatically provides `list`, `retrieve` actions.
+    """
+    queryset = JuzgadoFederal.objects.all()
+    serializer_class = JuzgadoFederalSerial

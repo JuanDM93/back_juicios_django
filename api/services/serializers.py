@@ -2,9 +2,9 @@ from rest_framework import serializers
 
 from api.accounts.serializers import AbogadoSerial
 from .models import (
-    Juzgado,
+    Juzgado, JuzgadoLocal, JuzgadoFederal,
     Juicio, JuicioLocal, JuicioFederal,
-    Acuerdo
+    Acuerdo,
 )
 
 # ACUERDO
@@ -19,36 +19,7 @@ class AcuerdoSerial(serializers.ModelSerializer):
         )
 
 # JUICIOs
-class JuicioSerial(serializers.ModelSerializer):
-    abogados = AbogadoSerial(many=True, read_only=True)
-    acuerdos = AcuerdoSerial(many=True, read_only=True)
-    class Meta:
-        model = Juicio
-        fields = (
-            'id',
-            'nombre',
-            'fecha',
-            'tipo',
-            'juzgado',
-            'abogados',
-            'acuerdos',
-        )
-
-class JuicioFederalSerial(JuicioSerial):
-    abogados = AbogadoSerial(many=True, read_only=True)
-    acuerdos = AcuerdoSerial(many=True, read_only=True)
-    class Meta:
-        model = JuicioFederal
-        fields = (
-            'id',
-            'nombre',
-            'juzgado',
-            'abogados',
-            'acuerdos',
-            'extraFederal',
-        )
-
-class JuicioLocalSerial(JuicioSerial):
+class JuicioLocalSerial(serializers.ModelSerializer):
     abogados = AbogadoSerial(many=True, read_only=True)
     acuerdos = AcuerdoSerial(many=True, read_only=True)
     class Meta:
@@ -62,13 +33,39 @@ class JuicioLocalSerial(JuicioSerial):
             'extraLocal',
         )
 
-# JUZGADO
-class JuzgadoSerial(serializers.ModelSerializer):
-    juicios = JuicioSerial(many=True, read_only=True)
+class JuicioFederalSerial(serializers.ModelSerializer):
+    abogados = AbogadoSerial(many=True, read_only=True)
+    acuerdos = AcuerdoSerial(many=True, read_only=True)
     class Meta:
-        model = Juzgado
+        model = JuicioFederal
+        fields = (
+            'id',
+            'nombre',
+            'juzgado',
+            'abogados',
+            'acuerdos',
+            'extraFederal',
+        )
+
+# JUZGADOs
+class JuzgadoLocalSerial(serializers.ModelSerializer):
+    juicios = JuicioLocalSerial(many=True, read_only=True)
+    class Meta:
+        model = JuzgadoLocal
         fields = (
             'id',
             'nombre',
             'juicios',
+            'extraLocal',
+        )
+        
+class JuzgadoFederalSerial(serializers.ModelSerializer):
+    juicios = JuicioFederalSerial(many=True, read_only=True)
+    class Meta:
+        model = JuzgadoFederal
+        fields = (
+            'id',
+            'nombre',
+            'juicios',
+            'extraFederal',
         )
