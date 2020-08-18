@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
     # APIs
     'api.accounts.apps.AccountsConfig',
+    #'api.services.apps.ServicesConfig',
     'api.locals.apps.LocalsConfig',
     'api.federals.apps.FederalsConfig',
 ]

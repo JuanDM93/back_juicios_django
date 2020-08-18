@@ -24,7 +24,8 @@ class JuicioViewSet(viewsets.ReadOnlyModelViewSet):
     """
     This viewset automatically provides `list`, `retrieve` actions.
     """
-    queryset = Juicio.objects.all()
+    #queryset = Juicio.objects.all()
+    queryset = Juicio.objects.all().order_by('-fecha')
     serializer_class = JuicioSerial
 
 # JUZGADO

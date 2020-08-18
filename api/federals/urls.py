@@ -7,6 +7,8 @@ from .views import (
     JuzgadoViewSet,
 )
 
+
+app_name = 'federals'
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
 router.register(r'acuerdos', AcuerdoViewSet)

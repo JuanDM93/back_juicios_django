@@ -10,9 +10,10 @@ urlpatterns = [
     
     # APIs access
     path('accounts/', include('api.accounts.urls')),
-    path('locals/', include('api.locals.urls')),
-    path('federals/', include('api.federals.urls')),
-
+    
+    path('locals/', include('api.locals.urls', namespace='locals')),
+    path('federals/', include('api.federals.urls', namespace='federals')),
+    
     # REST AUTH
     path('api-auth/', include('rest_framework.urls')),
 ]
